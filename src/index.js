@@ -8,6 +8,9 @@ module.exports = {
   get createBottomTabNavigator() {
     return require('./navigators/createBottomTabNavigator').default;
   },
+  get createAdaptingTabNavigator() {
+    return require('./navigators/createAdaptingTabNavigator').default;
+  },
   get createMaterialTopTabNavigator() {
     return require('./navigators/createMaterialTopTabNavigator').default;
   },
@@ -17,6 +20,9 @@ module.exports = {
    */
   get BottomTabBar() {
     return require('./views/BottomTabBar').default;
+  },
+  get AdaptingTabBar() {
+    return require('./views/AdaptingTabBar').default;
   },
   get MaterialTopTabBar() {
     return require('./views/MaterialTopTabBar').default;

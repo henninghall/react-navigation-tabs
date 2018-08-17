@@ -7,11 +7,13 @@ import {
   StyleSheet,
   View,
   Platform,
+  NativeModules,
 } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-
-import CrossFadeIcon from './CrossFadeIcon';
 import withDimensions from '../utils/withDimensions';
+import CrossFadeIcon from './CrossFadeIcon';
+
+const { StatusBarManager } = NativeModules;
 
 export type TabBarOptions = {
   activeTintColor?: string,
@@ -64,7 +66,7 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
   }
 }
 
-class TabBarBottom extends React.Component<Props> {
+class TabBarBottom extends React.Component<Props, *> {
   static defaultProps = {
     activeTintColor: '#3478f6', // Default active tint color in iOS 10
     activeBackgroundColor: 'transparent',
@@ -76,6 +78,14 @@ class TabBarBottom extends React.Component<Props> {
     adaptive: isIOS11,
     safeAreaInset: { bottom: 'always', top: 'never' },
   };
+
+  state = { statusBarHeight: 20 };
+
+  componentDidMount() {
+    StatusBarManager.getHeight(({ height }) =>
+      this.setState({ statusBarHeight: height })
+    );
+  }
 
   _renderLabel = ({ route, focused }) => {
     const {
@@ -203,6 +213,7 @@ class TabBarBottom extends React.Component<Props> {
         ? styles.tabBarCompact
         : styles.tabBarRegular,
       style,
+      { paddingTop: this.state.statusBarHeight },
     ];
 
     return (
@@ -236,6 +247,7 @@ class TabBarBottom extends React.Component<Props> {
                   ? styles.tabLandscape
                   : styles.tabPortrait,
                 tabStyle,
+                { alignItem: 'center', justifyContent: 'center' },
               ]}
             >
               {this._renderIcon(scene)}
@@ -283,9 +295,7 @@ const styles = StyleSheet.create({
   iconWithoutLabel: {
     flex: 1,
   },
-  iconWithLabel: {
-    flex: 1,
-  },
+  iconWithLabel: {},
   iconWithExplicitHeight: {
     height: Platform.isPad ? DEFAULT_HEIGHT : COMPACT_HEIGHT,
   },

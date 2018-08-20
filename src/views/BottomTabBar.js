@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   tab: {
     flex: 1,
-    alignItems: isIos ? 'center' : 'stretch',
+    alignItems: 'center',
   },
   tabPortrait: {
     justifyContent: 'flex-end',

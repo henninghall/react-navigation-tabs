@@ -79,12 +79,13 @@ class TabBarBottom extends React.Component<Props, *> {
     safeAreaInset: { bottom: 'always', top: 'never' },
   };
 
-  state = { statusBarHeight: 20 };
+  state = { statusBarHeight: isIos ? 20 : StatusBarManager.HEIGHT };
 
   componentDidMount() {
-    StatusBarManager.getHeight(({ height }) =>
-      this.setState({ statusBarHeight: height })
-    );
+    isIos &&
+      StatusBarManager.getHeight(({ height }) =>
+        this.setState({ statusBarHeight: height })
+      );
   }
 
   _renderLabel = ({ route, focused }) => {
@@ -282,7 +283,7 @@ const styles = StyleSheet.create({
   },
   tab: {
     flex: 1,
-    alignItems: isIos ? 'center' : 'stretch',
+    alignItems: 'center',
   },
   tabPortrait: {
     justifyContent: 'flex-end',

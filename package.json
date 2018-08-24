@@ -1,6 +1,6 @@
 {
-  "name": "react-navigation-tabs_adapting",
-  "version": "0.6.2",
+  "name": "react-navigation-adapting-tabs",
+  "version": "0.0.1",
   "description": "Tab Navigation components for React Navigation",
   "main": "dist/index.js",
   "files": [
@@ -42,6 +42,7 @@
     "prop-types": "^15.6.1",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-safe-area-view": "^0.7.0",
+    "react-native-screen-orientation-listener": "^1.0.3",
     "react-native-tab-view": "^1.0.0"
   },
   "devDependencies": {

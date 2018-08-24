@@ -1,15 +1,42 @@
-/* @flow */
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
-import withDimensions from '../utils/withDimensions';
 import BottomTabBar from './BottomTabBar';
 import RightTabBar from './RightTabBar';
+import {
+  ScreenOrientation,
+  getScreenOrientation,
+  Orientation,
+} from 'react-native-screen-orientation-listener';
 
-class AdaptingTabBar extends React.PureComponent<*> {
+class AdaptingTabBar extends React.PureComponent {
+  state = {
+    orientation: getScreenOrientation(),
+  };
+
+  orientationChange = orientation => this.setState({ orientation });
+
   render() {
-    const TabBar = this.props.isLandscape ? RightTabBar : BottomTabBar;
-    return <TabBar {...this.props} />;
+    const TabBar =
+      this.state.orientation === Orientation.LANDSCAPE
+        ? RightTabBar
+        : BottomTabBar;
+    return (
+      <ScreenOrientation
+        onChange={this.orientationChange}
+        style={styles.container}
+      >
+        <TabBar {...this.props} />
+      </ScreenOrientation>
+    );
   }
 }
 
-export default withDimensions(AdaptingTabBar);
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+  },
+});
+
+export default AdaptingTabBar;

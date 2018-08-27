@@ -4884,6 +4884,10 @@ react-native-safe-area-view@^0.8.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
+react-native-screen-orientation-listener@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-screen-orientation-listener/-/react-native-screen-orientation-listener-1.0.4.tgz#cf16c7be47c33fb7889148c19c214343f8a27892"
+
 react-native-tab-view@^0.0.77:
   version "0.0.77"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.77.tgz#11ceb8e7c23100d07e628dc151b57797524d00d4"

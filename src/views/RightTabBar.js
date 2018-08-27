@@ -42,6 +42,7 @@ type Props = TabBarOptions & {
   dimensions: { width: number, height: number },
   isLandscape: boolean,
   safeAreaInset: { top: string, right: string, bottom: string, left: string },
+  verticalWidth: number,
 };
 
 const majorVersion = parseInt(Platform.Version, 10);
@@ -214,7 +215,10 @@ class TabBarBottom extends React.Component<Props, *> {
         ? styles.tabBarCompact
         : styles.tabBarRegular,
       style,
-      { paddingTop: this.state.statusBarHeight },
+      {
+        paddingTop: this.state.statusBarHeight,
+        width: this.props.verticalWidth || DEFAULT_WIDTH,
+      },
     ];
 
     return (
@@ -264,7 +268,7 @@ class TabBarBottom extends React.Component<Props, *> {
 const DEFAULT_HEIGHT = 49;
 const COMPACT_HEIGHT = 29;
 
-const WIDTH = 60;
+const DEFAULT_WIDTH = 60;
 
 const styles = StyleSheet.create({
   tabBar: {
@@ -275,11 +279,11 @@ const styles = StyleSheet.create({
   },
   tabBarCompact: {
     height: '100%',
-    width: WIDTH,
+    width: DEFAULT_WIDTH,
   },
   tabBarRegular: {
     height: '100%',
-    width: WIDTH,
+    width: DEFAULT_WIDTH,
   },
   tab: {
     flex: 1,

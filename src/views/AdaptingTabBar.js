@@ -23,7 +23,7 @@ class AdaptingTabBar extends React.PureComponent {
         : BottomTabBar;
     return (
       <ScreenOrientation
-        onChange={this.orientationChange}
+        onRotate={this.orientationChange}
         style={styles.container}
       >
         <TabBar {...this.props} />

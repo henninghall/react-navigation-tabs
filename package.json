@@ -1,6 +1,6 @@
 {
   "name": "react-navigation-adapting-tabs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tab Navigation components for React Navigation",
   "main": "dist/index.js",
   "files": [

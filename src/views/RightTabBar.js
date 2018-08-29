@@ -214,10 +214,10 @@ class TabBarBottom extends React.Component<Props, *> {
       this._shouldUseHorizontalLabels() && !Platform.isPad
         ? styles.tabBarCompact
         : styles.tabBarRegular,
-      style,
       {
         paddingTop: this.state.statusBarHeight,
         width: this.props.verticalWidth || DEFAULT_WIDTH,
+        style,
       },
     ];
 
